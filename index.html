@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BeatSellerz — Marketplace (MVP)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar" aria-label="Navigation latérale">
+        <div class="sidebar__brand">
+          <div class="brand__text">
+            <div class="wordmark" aria-label="BeatSellerz">
+              <span class="wordmark__beat">Beat</span><span class="wordmark__sellers">Sellerz</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="sidebar__social" aria-label="Raccourcis sociaux">
+          <button class="icon-btn" data-toast="Instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm-5 4.2a3.8 3.8 0 1 1 0 7.6 3.8 3.8 0 0 1 0-7.6Zm0 2a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6Zm5.2-2.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+          </button>
+          <button class="icon-btn" data-toast="Discord" aria-label="Discord">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4.5A16 16 0 0 0 16.1 3l-.2.4a13 13 0 0 1 2.7 1 10 10 0 0 0-4.9-1.2 10 10 0 0 0-4.9 1.2 13 13 0 0 1 2.7-1L11.3 3A16 16 0 0 0 7.4 4.5C4.9 8.1 4.2 11.7 4.5 15.3a16 16 0 0 0 5 2.6l1.1-1.5a10 10 0 0 1-1.7-.8l.4-.3a12 12 0 0 0 10.2 0l.4.3a10 10 0 0 1-1.7.8l1.1 1.5a16 16 0 0 0 5-2.6c.4-4.1-.7-7.6-3.3-10.8ZM9.6 13.7c-.8 0-1.5-.7-1.5-1.6 0-.9.6-1.6 1.5-1.6.8 0 1.5.7 1.5 1.6 0 .9-.7 1.6-1.5 1.6Zm4.8 0c-.8 0-1.5-.7-1.5-1.6 0-.9.6-1.6 1.5-1.6.8 0 1.5.7 1.5 1.6 0 .9-.7 1.6-1.5 1.6Z"/></svg>
+          </button>
+          <button class="icon-btn" data-toast="Email" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/></svg>
+          </button>
+          <button class="icon-btn" data-toast="TikTok" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3a6 6 0 0 0 5 3v3a9 9 0 0 1-5-1.4V14a7 7 0 1 1-7-7c.7 0 1.3.1 2 .3v3.3a3.7 3.7 0 1 0 3 3.6V3h2Z"/></svg>
+          </button>
+        </nav>
+
+        <div class="sidebar__section">
+          <div class="sidebar__title">Genres</div>
+          <div class="genre-list" role="list">
+            <button class="genre is-active" role="listitem" data-genre="Trap">Trap</button>
+            <button class="genre" role="listitem" data-genre="Drill">Drill</button>
+            <button class="genre" role="listitem" data-genre="Boom Bap">Boom Bap</button>
+            <button class="genre" role="listitem" data-genre="Country">Country</button>
+            <button class="genre" role="listitem" data-genre="Rock">Rock</button>
+            <button class="genre" role="listitem" data-genre="New Jazz">New Jazz</button>
+            <button class="genre" role="listitem" data-genre="Jazz">Jazz</button>
+          </div>
+        </div>
+
+        <div class="sidebar__footer">
+          <a class="pill" href="#/dashboard">Dashboard</a>
+          <a class="pill pill--ghost" href="#/admin">Admin</a>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar__left">
+            <div class="page-title">
+              <div class="page-title__kicker">Les prods</div>
+              <div class="page-title__main" id="pageTitle">Sellers</div>
+            </div>
+          </div>
+          <div class="topbar__center">
+            <div class="search">
+              <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 1 1 5.3 14l4.2 4.2-1.4 1.4-4.2-4.2A8 8 0 0 1 10 2Zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z"/></svg>
+              <input id="searchInput" type="search" placeholder="Barre de recherche" autocomplete="off" />
+            </div>
+          </div>
+          <div class="topbar__right">
+            <div class="top-icons" aria-label="Menu haut droite">
+              <a class="topicon" aria-label="Dashboard" href="#/dashboard" title="Dashboard">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 13h7V4H4v9Zm9 7h7V11h-7v9ZM4 20h7v-5H4v5Zm9-9h7V4h-7v7Z"></path>
+                </svg>
+              </a>
+
+              <a class="topicon" aria-label="Panier" href="#/cart" title="Panier">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 4h-2l-1 2v2h2l3.6 7.6-1.3 2.4A2 2 0 0 0 10 22h10v-2H10l1.1-2h7.5a2 2 0 0 0 1.8-1.1L22 8H7.4L7 6h15V4H7Z"></path>
+                  <path d="M10 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
+                </svg>
+                <span class="cart-badge cart-badge--top" id="cartBadge" aria-label="Articles au panier">0</span>
+              </a>
+
+              <button class="topicon" aria-label="Créer" title="Créer" data-action="create">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+              </button>
+
+              <a class="topicon" aria-label="Favoris" href="#/favorites" title="Favoris">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 21s-7-4.5-9.3-8.6C1 9.2 2.9 6 6.4 6c2 0 3.2 1 3.6 1.6C10.4 7 11.6 6 13.6 6c3.5 0 5.4 3.2 3.7 6.4C19 16.5 12 21 12 21Z"></path>
+                </svg>
+              </a>
+
+              <a class="topicon" aria-label="Notifications" title="Notifications" href="#/notifications">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 22a2.5 2.5 0 0 0 2.5-2.5h-5A2.5 2.5 0 0 0 12 22Z"></path>
+                  <path d="M19 18H5l2-2v-5a5 5 0 1 1 10 0v5l2 2Z"></path>
+                </svg>
+              </a>
+
+              <button class="topicon" id="accountBtn" aria-label="Compte" title="Compte">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"></path>
+                  <path d="M4 20a8 8 0 0 1 16 0"></path>
+                </svg>
+              </button>
+
+              <button class="topicon" aria-label="Messages" title="Messages" data-toast="Messages (proto)">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 4h16v12H7l-3 3V4Z"></path>
+                </svg>
+              </button>
+
+              <a class="topicon" aria-label="Bibliothèque" href="#/library" title="Bibliothèque">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 5h14a2 2 0 0 1 2 2v12H6a2 2 0 0 0-2 2V5Z"></path>
+                  <path d="M6 5v14"></path>
+                </svg>
+              </a>
+
+              <a class="topicon" aria-label="Abonnements" href="#/subscriptions" title="Abonnements">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 7h14M7 12h14M7 17h14"></path>
+                  <path d="M3 7h.01M3 12h.01M3 17h.01"></path>
+                </svg>
+              </a>
+
+              <a class="topicon" aria-label="Waveform" title="Waveform" href="#/waveform">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3 13v-2m3 6V7m3 12V5m3 14V5m3 12V7m3 10V9m3 4v-2"></path>
+                </svg>
+              </a>
+            </div>
+
+            <a class="bsMark" href="#/" aria-label="Accueil">
+              <span class="bsMark__inner" aria-hidden="true">
+                <span class="bsIcon bsIcon--big">
+                  <span class="bsIcon__b">B</span>
+                  <span class="bsIcon__s">S</span>
+                </span>
+              </span>
+            </a>
+          </div>
+        </header>
+
+        <section class="content" id="outlet" aria-live="polite"></section>
+      </main>
+
+      <aside class="right" aria-label="Panneau de droite">
+        <div class="right__card">
+          <div class="right__title">Lancez-vous</div>
+          <div class="right__text">
+            Vendez vos prods avec de faibles frais et des paiements rapides.
+          </div>
+          <a class="cta cta--link" href="#/become-seller">Créer un compte seller</a>
+          <div class="right__hint">Proto sans tiers — Stripe Connect à brancher plus tard.</div>
+        </div>
+
+        <div class="right__card right__card--small">
+          <div class="right__title">Astuce</div>
+          <div class="right__text">
+            Utilise la barre de recherche + filtres genre pour tester l’expérience.
+          </div>
+        </div>
+
+        <div class="rightActions" aria-label="Actions">
+          <a class="donBtn" href="https://fr.tipeee.com/user/rowdy-3" target="_blank" rel="noreferrer" aria-label="Faire un don (Tipeee)">Don</a>
+          <button class="report" type="button" data-toast="Report (proto)">Report</button>
+        </div>
+      </aside>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <dialog class="modal" id="sellerModal">
+      <div class="modal__header">
+        <div class="modal__title">Devenir seller</div>
+        <button class="icon-btn" id="closeSellerModal" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3 1.4 1.4Z"/></svg>
+        </button>
+      </div>
+      <div class="modal__body">
+        <p class="muted">
+          Dans la vraie version, ici on lance l’onboarding Stripe Connect (Express) pour vérifier l’identité et activer les paiements.
+        </p>
+        <div class="form">
+          <label class="field">
+            <span>Nom d’artiste</span>
+            <input id="sellerName" placeholder="ex: 7AM Beats" />
+          </label>
+          <label class="field">
+            <span>Email</span>
+            <input id="sellerEmail" type="email" placeholder="ex: you@beats.com" />
+          </label>
+        </div>
+        <div class="modal__actions">
+          <button class="pill pill--ghost" id="cancelSeller" type="button">Annuler</button>
+          <button class="pill" id="confirmSeller" type="button">Continuer</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="authModal">
+      <div class="modal__header">
+        <div class="modal__title" id="authTitle">Connexion</div>
+        <button class="icon-btn" id="closeAuthModal" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3 1.4 1.4Z"/></svg>
+        </button>
+      </div>
+      <div class="modal__body">
+        <p class="muted" id="authHint">Proto local: crée un compte ou connecte-toi.</p>
+        <div class="form">
+          <label class="field">
+            <span>Email</span>
+            <input id="authEmail" type="email" placeholder="ex: you@beats.com" />
+          </label>
+          <label class="field">
+            <span>Mot de passe</span>
+            <input id="authPassword" type="password" placeholder="••••••••" />
+          </label>
+          <label class="field" id="authDisplayNameWrap" style="display:none">
+            <span>Nom / pseudo</span>
+            <input id="authDisplayName" placeholder="ex: 7AM Beats" />
+          </label>
+          <label class="field" id="authAlsoSellerWrap" style="display:none">
+            <span>Vendre aussi ?</span>
+            <label class="check">
+              <input id="authAlsoSeller" type="checkbox" />
+              <span>Activer le mode seller sur ce compte</span>
+            </label>
+          </label>
+        </div>
+        <div class="modal__actions modal__actions--space">
+          <button class="pill pill--ghost" id="toggleAuthMode" type="button">Créer un compte</button>
+          <div class="modal__actionsRight">
+            <button class="pill pill--ghost" id="logoutBtn" type="button" style="display:none">Déconnexion</button>
+            <button class="pill" id="submitAuth" type="button">Se connecter</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="beatModal">
+      <div class="modal__header">
+        <div class="modal__title" id="beatModalTitle">Nouveau beat</div>
+        <button class="icon-btn" id="closeBeatModal" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3 1.4 1.4Z"/></svg>
+        </button>
+      </div>
+      <div class="modal__body">
+        <p class="muted" id="beatModalHint">Crée ou modifie un beat (proto local).</p>
+        <form class="form" id="beatForm">
+          <input type="hidden" id="beatId" />
+          <label class="field">
+            <span>Titre</span>
+            <input id="beatTitle" required placeholder="ex: Midnight Run" />
+          </label>
+          <div class="form__row">
+            <label class="field">
+              <span>Genre</span>
+              <input id="beatGenre" required placeholder="ex: Trap" />
+            </label>
+            <label class="field">
+              <span>BPM</span>
+              <input id="beatBpm" required inputmode="numeric" placeholder="142" />
+            </label>
+          </div>
+          <div class="form__row">
+            <label class="field">
+              <span>Key</span>
+              <input id="beatKey" required placeholder="F#m" />
+            </label>
+            <label class="field">
+              <span>Prix base (€)</span>
+              <input id="beatBasePrice" required inputmode="numeric" placeholder="29" />
+            </label>
+          </div>
+          <label class="field">
+            <span>Tags (virgules)</span>
+            <input id="beatTags" placeholder="dark, 808, club" />
+          </label>
+          <div class="modal__actions">
+            <button class="pill pill--ghost" type="button" id="cancelBeatModal">Annuler</button>
+            <button class="pill" type="submit" id="submitBeatModal">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
