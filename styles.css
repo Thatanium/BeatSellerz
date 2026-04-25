@@ -970,6 +970,17 @@ a{color:inherit; text-decoration:none}
   gap: 20px;
 }
 
+.beat-carousel {
+  display: flex;
+  flex-wrap: nowrap; /* Garde les sons en ligne pour le carrousel */
+  overflow-x: auto;  /* Permet de scroller horizontalement s'il n'y a pas assez de place */
+  width: 100%;       /* Prend toute la place restante */
+}
+
+.beat-card {
+  flex: 0 0 220px;   /* FORCE chaque carte à faire 220px, elle ne peut pas disparaître */
+}
+
 /* Si l'écran fait moins de 1200px de large */
 @media (max-width: 1200px) {
   .sidebar {
