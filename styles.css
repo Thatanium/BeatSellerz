@@ -969,3 +969,16 @@ a{color:inherit; text-decoration:none}
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
+
+/* Si l'écran fait moins de 1200px de large */
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 80px; /* On réduit la largeur */
+  }
+  .sidebar__brand, .sidebar__title, .genre span {
+    display: none; /* On cache le texte pour ne garder que les icônes */
+  }
+  .main {
+    margin-left: 80px; /* On ajuste la marge du contenu principal */
+  }
+}
