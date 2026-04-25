@@ -318,7 +318,7 @@ function cartTotal(db, cart) {
 }
 
 function renderHome(db, ui) {
-  setTitle("Sellers");
+  setTitle("Sellerz");
   const beats = db.beats
     .filter((b) => b.approved)
     .filter((b) => (!ui.genre ? true : b.genre === ui.genre))
@@ -1346,6 +1346,7 @@ function handleLogout() {
   toast("Déconnecté");
   syncAccountBtn();
   closeAuthModal();
+  window.location.hash = "#/";
   render();
 }
 
@@ -1736,6 +1737,7 @@ function bindGlobalUI() {
   // Genres (sidebar)
   document.querySelectorAll(".genre").forEach((btn) => {
     btn.addEventListener("click", () => {
+      window.location.hash = "#/";
       document.querySelectorAll(".genre").forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
       const ui = window.__uiState || (window.__uiState = { genre: "Trap", query: "" });
@@ -2026,6 +2028,28 @@ function bindGlobalUI() {
     feedBeats.forEach(beat => feedGrid.appendChild(createBeatCard(beat)));
   }
 
+  function saveBeatOnline(newBeat) {
+    const beatId = Date.now().toString();
+    // On envoie les données sur le serveur Firebase
+    db.ref('beats/' + beatId).set({
+      ...newBeat,
+      id: beatId,
+      createdAt: new Date().toISOString(),
+      upvotes: 0
+    }).then(() => {
+      showToast("Beat mis en ligne !");
+    });
+  }
+
+  function syncBeats() {
+    db.ref('beats').on('value', (snapshot) => {
+      const data = snapshot.val();
+      const allBeats = data ? Object.values(data) : [];
+      
+      // On met à jour tes carrousels avec les données d'internet
+      renderHomeWithData(allBeats);
+    });
+  }
   
 });
 }

@@ -67,7 +67,7 @@
         <header class="topbar">
           <div class="topbar__left">
             <div class="page-title">
-              <div class="page-title__main" id="pageTitle">Sellers</div>
+              <div class="page-title__main" id="pageTitle">Sellerw</div>
             </div>
           </div>
           <div class="topbar__center">
@@ -278,6 +278,26 @@
         </form>
       </div>
     </dialog>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <script>
+      // Tes clés Firebase (tu les trouveras dans les paramètres de ton projet Firebase)
+      const firebaseConfig = {
+        apiKey: "TON_API_KEY",
+        authDomain: "ton-projet.firebaseapp.com",
+        databaseURL: "https://ton-projet-default-rtdb.firebaseio.com/",
+        projectId: "ton-projet",
+        storageBucket: "ton-projet.appspot.com",
+        messagingSenderId: "...",
+        appId: "..."
+      };
+
+      // Initialisation
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
+    </script>
 
     <script type="module" src="./app.js"></script>
   </body>
