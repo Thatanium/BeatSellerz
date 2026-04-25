@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BeatSellerz — Marketplace (MVP)</title>
+    
+    <link rel="icon" type="image/png" href="./B_S-removebg-preview.png" />
+    
     <link rel="stylesheet" href="./styles.css" />
-  </head>
+</head>
   <body>
     <div class="app">
+      <div id="statusbar" class="statusbar"></div>
       <aside class="sidebar" aria-label="Navigation latérale">
         <div class="sidebar__brand">
           <div class="brand__text">
@@ -22,13 +26,13 @@
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm-5 4.2a3.8 3.8 0 1 1 0 7.6 3.8 3.8 0 0 1 0-7.6Zm0 2a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6Zm5.2-2.2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
           </button>
           <button class="icon-btn" data-toast="Discord" aria-label="Discord">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4.5A16 16 0 0 0 16.1 3l-.2.4a13 13 0 0 1 2.7 1 10 10 0 0 0-4.9-1.2 10 10 0 0 0-4.9 1.2 13 13 0 0 1 2.7-1L11.3 3A16 16 0 0 0 7.4 4.5C4.9 8.1 4.2 11.7 4.5 15.3a16 16 0 0 0 5 2.6l1.1-1.5a10 10 0 0 1-1.7-.8l.4-.3a12 12 0 0 0 10.2 0l.4.3a10 10 0 0 1-1.7.8l1.1 1.5a16 16 0 0 0 5-2.6c.4-4.1-.7-7.6-3.3-10.8ZM9.6 13.7c-.8 0-1.5-.7-1.5-1.6 0-.9.6-1.6 1.5-1.6.8 0 1.5.7 1.5 1.6 0 .9-.7 1.6-1.5 1.6Zm4.8 0c-.8 0-1.5-.7-1.5-1.6 0-.9.6-1.6 1.5-1.6.8 0 1.5.7 1.5 1.6 0 .9-.7 1.6-1.5 1.6Z"/></svg>
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"width="1920.000000pt" height="2164.000000pt" viewBox="0 0 1920.000000 2164.000000"preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,2164.000000) scale(0.100000,-0.100000)"fill="var(--gold2)" stroke="none"><path d="M6785 19079 c-22 -4 -137 -26 -255 -49 -1146 -219 -2304 -583 -3390 -1064 -107 -47 -200 -90 -206 -94 -15 -9 -204 -299 -381 -582 -1207 -1937 -1988 -3959 -2333 -6040 -220 -1331 -272 -2692 -155 -4120 9 -102 18 -195 20 -207 6 -25 213 -178 555 -409 625 -422 1130 -719 1785 -1049 723 -365 1365 -631 2150 -893 315 -105 336 -111 361 -102 18 7 96 110 256 340 288 413 769 1253 754 1315 -6 25 -2 23 -234 116 -319 129 -739 328 -1062 504 -267 145 -281 155 -265 205 6 18 267 231 330 270 29 18 19 21 318 -109 834 -363 1762 -639 2670 -796 2226 -383 4479 -91 6589 854 75 33 145 61 155 61 28 0 352 -258 359 -285 3 -13 1 -32 -4 -42 -14 -25 -277 -173 -577 -323 -287 -144 -453 -219 -755 -341 -259 -104 -252 -96 -190 -219 151 -301 427 -766 673 -1135 189 -284 278 -406 301 -414 25 -10 43 -5 371 104 1542 511 2900 1202 4263 2169 188 134 213 155 221 186 5 19 16 123 25 230 114 1395 69 2705 -139 4010 -361 2268 -1243 4474 -2605 6515 l-127 190 -189 84 c-1140 505 -2399 893 -3572 1102 -181 33 -183 33 -201 13 -43 -44 -293 -538 -441 -872 -61 -136 -65 -142 -89 -138 -50 10 -409 56 -591 76 -1033 111 -2079 113 -3115 5 -179 -19 -432 -51 -559 -70 -54 -9 -100 -15 -101 -13 -1 2 -31 68 -66 148 -124 283 -411 841 -446 868 -19 13 -48 14 -108 1z m-237 -6099 c307 -27 598 -140 847 -328 80 -61 233 -210 305 -297 230 -281 383 -646 430 -1028 14 -114 14 -420 0 -533 -39 -317 -155 -643 -317 -889 -269 -407 -645 -671 -1093 -766 -143 -31 -426 -33 -575 -5 -254 47 -526 172 -730 335 -65 52 -213 201 -275 276 -458 559 -579 1378 -307 2080 251 649 804 1093 1437 1154 123 12 152 12 278 1z m6380 0 c305 -27 601 -142 847 -328 80 -61 234 -211 305 -297 232 -283 385 -652 431 -1038 16 -134 6 -513 -15 -632 -81 -437 -267 -806 -549 -1086 -243 -242 -513 -389 -849 -461 -141 -30 -425 -32 -573 -4 -207 38 -418 123 -593 239 -124 82 -158 109 -266 215 -389 382 -596 890 -596 1462 0 926 574 1714 1382 1896 175 40 305 49 476 34z"/></g></svg>
           </button>
           <button class="icon-btn" data-toast="Email" aria-label="Email">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/></svg>
           </button>
           <button class="icon-btn" data-toast="TikTok" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3a6 6 0 0 0 5 3v3a9 9 0 0 1-5-1.4V14a7 7 0 1 1-7-7c.7 0 1.3.1 2 .3v3.3a3.7 3.7 0 1 0 3 3.6V3h2Z"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12.532 2a.114.114 0 0 0-.113.111v14.417c0 2.224-1.803 4.027-4.027 4.027-2.224 0-4.027-1.803-4.027-4.027a4.032 4.032 0 0 1 1.706-3.324c.731-.51 1.547-.7 2.32-.716a.114.114 0 0 0 .113-.111V9.083a.114.114 0 0 0-.113-.111A7.322 7.322 0 0 0 1 16.295a7.33 7.33 0 0 0 7.329 7.329 7.33 7.33 0 0 0 7.329-7.329V8.674c1.868 1.488 4.218 2.292 6.643 2.292.112 0 .204-.092.204-.204V7.452a.204.204 0 0 0-.127-.189c-3.136-.93-5.326-3.962-5.326-7.151 0-.112-.092-.204-.204-.204h-4.316z"/></svg>
           </button>
         </nav>
 
@@ -38,11 +42,19 @@
             <button class="genre is-active" role="listitem" data-genre="Trap">Trap</button>
             <button class="genre" role="listitem" data-genre="Drill">Drill</button>
             <button class="genre" role="listitem" data-genre="Boom Bap">Boom Bap</button>
-            <button class="genre" role="listitem" data-genre="Country">Country</button>
-            <button class="genre" role="listitem" data-genre="Rock">Rock</button>
+            <button class="genre" role="listitem" data-genre="Cloud Rap">Cloud Rap</button>
+            <button class="genre" role="listitem" data-genre="Glo">Glo</button>
+            <button class="genre" role="listitem" data-genre="Supertrap">Supertrap</button>
+            <button class="genre" role="listitem" data-genre="Rage">Rage</button>
+            <button class="genre" role="listitem" data-genre="Plugg">Plugg</button>
+            <button class="genre" role="listitem" data-genre="Jersey">Jersey</button>
             <button class="genre" role="listitem" data-genre="New Jazz">New Jazz</button>
+            <button class="genre" role="listitem" data-genre="Pop">Pop</button>
+            <button class="genre" role="listitem" data-genre="Rock">Rock</button>
+            <button class="genre" role="listitem" data-genre="Métal">Métal</button>
+            <button class="genre" role="listitem" data-genre="Grunge">Grunge</button>
             <button class="genre" role="listitem" data-genre="Jazz">Jazz</button>
-          </div>
+         </div>
         </div>
 
         <div class="sidebar__footer">
@@ -55,82 +67,60 @@
         <header class="topbar">
           <div class="topbar__left">
             <div class="page-title">
-              <div class="page-title__kicker">Les prods</div>
               <div class="page-title__main" id="pageTitle">Sellers</div>
             </div>
           </div>
           <div class="topbar__center">
             <div class="search">
-              <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2a8 8 0 1 1 5.3 14l4.2 4.2-1.4 1.4-4.2-4.2A8 8 0 0 1 10 2Zm0 2a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z"/></svg>
+              <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               <input id="searchInput" type="search" placeholder="Barre de recherche" autocomplete="off" />
             </div>
           </div>
           <div class="topbar__right">
             <div class="top-icons" aria-label="Menu haut droite">
               <a class="topicon" aria-label="Dashboard" href="#/dashboard" title="Dashboard">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 13h7V4H4v9Zm9 7h7V11h-7v9ZM4 20h7v-5H4v5Zm9-9h7V4h-7v7Z"></path>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="13" width="7" height="8" rx="1.5"/><rect x="14" y="3" width="7" height="4" rx="1.5"/><rect x="14" y="11" width="7" height="10" rx="1.5"/></svg>
               </a>
 
               <a class="topicon" aria-label="Panier" href="#/cart" title="Panier">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M7 4h-2l-1 2v2h2l3.6 7.6-1.3 2.4A2 2 0 0 0 10 22h10v-2H10l1.1-2h7.5a2 2 0 0 0 1.8-1.1L22 8H7.4L7 6h15V4H7Z"></path>
-                  <path d="M10 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                 <span class="cart-badge cart-badge--top" id="cartBadge" aria-label="Articles au panier">0</span>
               </a>
 
               <button class="topicon" aria-label="Créer" title="Créer" data-action="create">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 5v14M5 12h14"></path>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
               </button>
 
               <a class="topicon" aria-label="Favoris" href="#/favorites" title="Favoris">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 21s-7-4.5-9.3-8.6C1 9.2 2.9 6 6.4 6c2 0 3.2 1 3.6 1.6C10.4 7 11.6 6 13.6 6c3.5 0 5.4 3.2 3.7 6.4C19 16.5 12 21 12 21Z"></path>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.6Z"/></svg>
               </a>
 
               <a class="topicon" aria-label="Notifications" title="Notifications" href="#/notifications">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 22a2.5 2.5 0 0 0 2.5-2.5h-5A2.5 2.5 0 0 0 12 22Z"></path>
-                  <path d="M19 18H5l2-2v-5a5 5 0 1 1 10 0v5l2 2Z"></path>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
               </a>
 
               <button class="topicon" id="accountBtn" aria-label="Compte" title="Compte">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z"></path>
-                  <path d="M4 20a8 8 0 0 1 16 0"></path>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </button>
 
               <button class="topicon" aria-label="Messages" title="Messages" data-toast="Messages (proto)">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 4h16v12H7l-3 3V4Z"></path>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg>
               </button>
+              
+              <a class="topicon" aria-label="Forum" href="#/forum" title="Forum">
+                <svg viewBox="0 0 24 24" aria-hidden="true" fill="#ffd700"><path d="M6 2h12a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H8l-4 4V6a4 4 0 0 1 4-4Zm10 12H8l-3.3 3.3.3-3.3V7h11v7Z"/></svg>
+              </a>
 
               <a class="topicon" aria-label="Bibliothèque" href="#/library" title="Bibliothèque">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 5h14a2 2 0 0 1 2 2v12H6a2 2 0 0 0-2 2V5Z"></path>
-                  <path d="M6 5v14"></path>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
               </a>
 
               <a class="topicon" aria-label="Abonnements" href="#/subscriptions" title="Abonnements">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M7 7h14M7 12h14M7 17h14"></path>
-                  <path d="M3 7h.01M3 12h.01M3 17h.01"></path>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg>
               </a>
 
               <a class="topicon" aria-label="Waveform" title="Waveform" href="#/waveform">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M3 13v-2m3 6V7m3 12V5m3 14V5m3 12V7m3 10V9m3 4v-2"></path>
-                </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h2M6 8v8M10 4v16M14 4v16M18 8v8M22 12h2"/></svg>
               </a>
             </div>
 

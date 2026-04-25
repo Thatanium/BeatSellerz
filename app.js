@@ -367,6 +367,18 @@ function renderHome(db, ui) {
         </div>
         <div class="rail" id="rail-playlists">${playlists.map((p) => renderPlaylistCard(p)).join("")}</div>
       </div>
+
+      <div class="section">
+        <div class="section__header">
+          <h2 class="section__title">Le feed</h2>
+          <div class="section__actions">
+            <button class="chev" data-scroll="feed" data-dir="-1" aria-label="Scroll gauche"><span aria-hidden="true">‹‹</span></button>
+            <button class="chev" data-scroll="feed" data-dir="1" aria-label="Scroll droite"><span aria-hidden="true">››</span></button>
+          </div>
+        </div>
+        <div class="rail" id="rail-upvoted">${beats.map((b) => renderBeatCard(db, b)).join("")}</div>
+      </div>
+
     </div>
   `;
 }
@@ -922,32 +934,42 @@ function renderSubscriptionsPage(db, type = "beatmaker") {
   setTitle("Abonnements");
   const t = type === "rapper" ? "rapper" : "beatmaker";
   const model = SUBSCRIPTIONS[t];
+  const featuredIdx = 2;
+  const featuredLabels = { rapper: "Populaire", beatmaker: "Meilleur deal" };
+
   const tabs = `
     <div class="subTabs" role="tablist" aria-label="Choisir type d’abonnement">
-      <a class="tab ${t === "rapper" ? "is-on" : ""}" role="tab" href="#/subscriptions?type=rapper">Rappeur</a>
-      <a class="tab ${t === "beatmaker" ? "is-on" : ""}" role="tab" href="#/subscriptions?type=beatmaker">Beatmaker</a>
+      <div class="subTabsInner">
+        <a class="tab ${t === "rapper" ? "is-on" : ""}" role="tab" href="#/subscriptions?type=rapper">Rappeur</a>
+        <a class="tab ${t === "beatmaker" ? "is-on" : ""}" role="tab" href="#/subscriptions?type=beatmaker">Beatmaker</a>
+      </div>
     </div>
   `;
-  const cols = model.plans
-    .map(
-      (p) => `
-      <div class="subCol">
+
+  const cols = model.plans.map((p, i) => {
+    const isFeatured = i === featuredIdx;
+    const priceNum = p.price.replace("€", "");
+    return `
+      <div class="subCol${isFeatured ? " is-featured" : ""}">
+        ${isFeatured ? `<div class="subBadge">${escapeHtml(featuredLabels[t])}</div>` : ""}
         <div class="subPlan">${escapeHtml(p.name)}</div>
+        <div class="subPriceNum">${escapeHtml(priceNum)}€</div>
+        <div class="subPriceUnit">/mois</div>
+        <div class="subDivider"></div>
         <ul class="subList">
           ${p.bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}
         </ul>
         <a class="subPrice priceBtn" href="#/subscribe-checkout?type=${encodeURIComponent(t)}&plan=${encodeURIComponent(p.name)}" aria-label="Choisir ${escapeHtml(p.name)} ${escapeHtml(p.price)}">
-          ${escapeHtml(p.price)}
+          ${isFeatured ? `Choisir ${escapeHtml(p.name)}` : "S’abonner"}
         </a>
       </div>
-    `,
-    )
-    .join("");
+    `;
+  }).join("");
 
   return `
     <div class="view">
       <div class="subWrap">
-        <h2 class="subTitle">${escapeHtml(model.title)}<span class="subKicker">${escapeHtml(model.role)}</span></h2>
+        <h2 class="subTitle">${escapeHtml(model.title)}</h2>
         ${tabs}
         <div class="subCols">${cols}</div>
       </div>
@@ -1962,6 +1984,50 @@ function bindGlobalUI() {
     const resetBtn = t.closest?.("[data-reset-db]");
     if (resetBtn) return resetDb();
   });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const statusbar = document.getElementById('statusbar');
+  
+    // On cible les icônes sociales, les icônes du haut, les genres et les boutons pilules
+    const targets = document.querySelectorAll('.icon-btn, .topicon, .genre, .pill, .bsMark');
+
+    targets.forEach(target => {
+      target.addEventListener('mouseenter', () => {
+      // On récupère le nom dans l'ordre de priorité : aria-label, title, ou le texte du bouton
+      const name = target.getAttribute('aria-label') || target.getAttribute('title') || target.innerText;
+      
+      if (name) {
+        statusbar.textContent = name;
+        statusbar.classList.add('is-visible');
+      }
+    });
+
+    target.addEventListener('mouseleave', () => {
+      statusbar.classList.remove('is-visible');
+    });
+  });
+
+  // Imaginons que 'allBeats' est ton tableau d'objets contenant tes prods
+  function renderHome(allBeats) {
+    // 1. Trier par date pour "Les derniers uploads" (les 4 ou 8 plus récents)
+    const recentBeats = [...allBeats]
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    .slice(0, 4);
+
+    // 2. Afficher tout pour "Le Feed"
+    const feedBeats = allBeats;
+
+    // Injection dans les grids respectifs
+    const recentGrid = document.getElementById('recentUploadsGrid');
+    const feedGrid = document.getElementById('fullFeedGrid');
+
+    // Utilise ta fonction de création de carte de beat habituelle
+    recentBeats.forEach(beat => recentGrid.appendChild(createBeatCard(beat)));
+    feedBeats.forEach(beat => feedGrid.appendChild(createBeatCard(beat)));
+  }
+
+  
+});
 }
 
 // Boot
