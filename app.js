@@ -2,6 +2,29 @@
 // - Navigation: hash router (#/beat/:id, #/dashboard, #/admin, etc.)
 // - Persistance: localStorage (db + session + cart)
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDsFAzK8bOWQJ-kUru_NnjN4VmOGGFxXW0",
+  authDomain: "beatsellerz.firebaseapp.com",
+  databaseURL: "https://beatsellerz-default-rtdb.firebaseio.com",
+  projectId: "beatsellerz",
+  storageBucket: "beatsellerz.firebasestorage.app",
+  messagingSenderId: "328226018100",
+  appId: "1:328226018100:web:6f35ceb8ce95f07752cb61",
+  measurementId: "G-2CE6CMRBYJ"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
 const LS = {
   db: "bs_db_v1",
   session: "bs_session_v1",
@@ -376,7 +399,7 @@ function renderHome(db, ui) {
             <button class="chev" data-scroll="feed" data-dir="1" aria-label="Scroll droite"><span aria-hidden="true">››</span></button>
           </div>
         </div>
-        <div class="rail" id="rail-upvoted">${beats.map((b) => renderBeatCard(db, b)).join("")}</div>
+        <div class="rail" id="rail-feed">${beats.map((b) => renderBeatCard(db, b)).join("")}</div>
       </div>
 
     </div>
